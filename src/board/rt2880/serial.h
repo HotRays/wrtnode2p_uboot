@@ -17,7 +17,11 @@
 #define RT2880_UART1	0x0C00  /* UART Lite */
 #define RT2880_UART2	0x0D00  /* UART Lite */
 #define RT2880_UART3	0x0E00  /* UART Lite */
+#if defined (CONFIG_UART1_CONSOLE)
 #define CFG_RT2880_CONSOLE	RT2880_UART1
+#else
+#define CFG_RT2880_CONSOLE	RT2880_UART2
+#endif
 #else
 #define RT2880_UART1	0x0500
 #define RT2880_UART2	0x0C00  /* UART Lite */

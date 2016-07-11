@@ -7,6 +7,10 @@ comment ""
 
 mainmenu_name 'Uboot Configuration'
 
+choice 'UART console'  "UART0 CONFIG_UART1_CONSOLE \
+                        UART1 CONFIG_UART2_CONSOLE
+                        " UART0
+
 choice 'UART baudrate'  "115200 CONFIG_BAUDRATE_115200 \
                          57600 CONFIG_BAUDRATE_57600
                          " 115200
@@ -1654,6 +1658,8 @@ fi
 #bool "Dual Image" DUAL_IMAGE_SUPPORT
 
 bool "USB Recovery" USB_RECOVERY_SUPPORT
+
+bool "SPIS GPIO mode" CONFIG_SPIS_GPIO 
 
 bool "ETH One Port Only" ETH_ONE_PORT_ONLY
 
