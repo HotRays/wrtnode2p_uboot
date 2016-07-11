@@ -1932,7 +1932,7 @@ void rt305x_esw_init(void)
 
 #endif // P5_RGMII_TO_MAC_MODE //
 
-#define RSTCTRL_EPHY_RST	(1<<24)
+#define RSTCTRL_EPHY_RST	    (1<<24)
 #define MT7628_EPHY_EN	        (0x1f<<16)
 #define MT7628_P0_EPHY_AIO_EN   (1<<16)	
 	/* We shall prevent modifying PHY registers if it is FPGA mode */
@@ -2111,15 +2111,25 @@ void rt305x_esw_init(void)
 	    mii_mgr_write(i, 26, phy_val);
 	}
 #elif defined (MT7628_ASIC_BOARD)
-/*TODO: Init MT7628 ASIC PHY HERE*/
+    /*
+     * bit[20:17]   EPHY P1~4 digital PAD selection
+     * bit[16]      EPHY P0 disable
+     *
+     * dfault value : 0xFE (P0 Enable. DDDD)
+     */
 	i = RALINK_REG(RT2880_AGPIOCFG_REG);
 	i &= ~(MT7628_P0_EPHY_AIO_EN);
+
+    printf("=> AGPIO : 0x%08x\n", RALINK_REG(RT2880_AGPIOCFG_REG));
+
 #if defined (ETH_ONE_PORT_ONLY)
-	i |= MT7628_EPHY_EN;
+	i |= MT7628_EPHY_EN;        //P0 Disable. DDDD
 #else
-	i &= ~(MT7628_EPHY_EN);
+	i &= ~(MT7628_EPHY_EN);     //P0 Enable. AAAA
 #endif
 	RALINK_REG(RT2880_AGPIOCFG_REG) = i;
+
+    printf("=> AGPIO : 0x%08x\n", RALINK_REG(RT2880_AGPIOCFG_REG));
 
 //	printf("RESET MT7628 PHY!!!!!!");
 	// reset phy
