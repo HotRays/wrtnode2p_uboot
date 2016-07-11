@@ -24,11 +24,11 @@ define uboot/Default
   IMAGE:=
 endef
 
-define uboot/k2s
+define uboot/sxx
   TITLE:=U-boot for mt7628 board
 endef
 
-UBOOTS:=k2s
+UBOOTS:=sxx
 
 define Package/uboot/template
 define Package/uboot-mt7628-$(1)
