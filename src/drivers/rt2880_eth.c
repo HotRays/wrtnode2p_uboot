@@ -2120,16 +2120,12 @@ void rt305x_esw_init(void)
 	i = RALINK_REG(RT2880_AGPIOCFG_REG);
 	i &= ~(MT7628_P0_EPHY_AIO_EN);
 
-    printf("=> AGPIO : 0x%08x\n", RALINK_REG(RT2880_AGPIOCFG_REG));
-
 #if defined (ETH_ONE_PORT_ONLY)
 	i |= MT7628_EPHY_EN;        //P0 Disable. DDDD
 #else
 	i &= ~(MT7628_EPHY_EN);     //P0 Enable. AAAA
 #endif
 	RALINK_REG(RT2880_AGPIOCFG_REG) = i;
-
-    printf("=> AGPIO : 0x%08x\n", RALINK_REG(RT2880_AGPIOCFG_REG));
 
 //	printf("RESET MT7628 PHY!!!!!!");
 	// reset phy
