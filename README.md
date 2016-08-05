@@ -1,5 +1,6 @@
 U-Boot
 ===
+**Thanks to [Andy](https://github.com/andy-padavan)**
 
 Install
 ---
