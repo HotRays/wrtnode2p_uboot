@@ -7,7 +7,7 @@ Install
 
 1. Download this repository.
   ```bash
-  $ git clone https://github.com/soonsebii/wrtnode2p_uboot.git
+  $ git clone --depth 1 https://github.com/soonsebii/wrtnode2p_uboot.git
   ```
 
 2. Copy wrtnode2p_uboot folder to wrtnode2p/openwrt/package/boot/uboot-mt7628.
