@@ -1371,7 +1371,7 @@ DDR_READY:
 #elif defined (ON_BOARD_512M_DRAM_COMPONENT)
 	addiu 	t4, zero, 4
 #else
-	DRAM Component not defined
+#error	"DRAM Component not defined"
 #endif
 #endif
 #if defined(ON_BOARD_DDR2)	
